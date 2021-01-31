@@ -49,6 +49,17 @@
 #include "cutils.h"
 #include "dromajo.h"
 
+#define dromajo_stderr stderr
+
+void *mallocz(size_t size) {
+    void *ptr;
+    ptr = malloc(size);
+    if (!ptr)
+        return NULL;
+    memset(ptr, 0, size);
+    return ptr;
+}
+
 static PhysMemoryRange *default_register_ram(PhysMemoryMap *s, uint64_t addr, uint64_t size, int devram_flags);
 static void             default_free_ram(PhysMemoryMap *s, PhysMemoryRange *pr);
 static const uint32_t * default_get_dirty_bits(PhysMemoryMap *map, PhysMemoryRange *pr);

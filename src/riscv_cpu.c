@@ -48,11 +48,15 @@
 #include <string.h>
 #include <unistd.h>
 
+#ifdef LIVECACHE
 #include "LiveCacheCore.h"
+#endif
 #include "cutils.h"
 #include "dromajo.h"
 #include "iomem.h"
 #include "riscv_machine.h"
+
+#define dromajo_stderr stderr
 
 // NOTE: Use GET_INSN_COUNTER not mcycle because this is just to track advancement of simulation
 #define write_reg(x, val)                         \
